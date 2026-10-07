@@ -1,6 +1,6 @@
 # Lab 4 task prompts and review notes
 
-The user/Codex conversation and verified task actions are in `Repo Link and Codex Chat History SE Lab 4.pdf` and the linked shared chat. The assignment was handled as four separate task iterations. These are concise task prompts derived from the assigned README, with the result checked after each change.
+The example User/Assistant dialogue in `Repo Link and Codex Chat History SE Lab 4.pdf` is a reconstruction of the completed work, not an actual chat export. The assignment was handled as four separate task iterations. These are concise task prompts derived from the assigned README, with the result checked after each change.
 
 1. **Pathfinding:** "Find why `bfs_path` reaches the player by a longer route. Change the search to true breadth-first order without changing tunnel collision rules." Review: the controlled layout returned an 8-cell route via row 4, where the original returned a 10-cell route via rows 6 and 7.
 2. **Dirt bands:** "Implement `dirt_color(row)` with valid RGB values that form distinct depth bands." Review: rows 1-3, 4-6, 7-9, and 10-13 each use a separate color.

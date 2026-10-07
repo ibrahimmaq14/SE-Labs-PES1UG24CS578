@@ -16,7 +16,7 @@ Each task has its own commit in the repository history.
 - [Before gameplay video](videos/before.mp4): 10 seconds using the unchanged source game.
 - [After gameplay video](videos/after.mp4): 10 seconds using the completed game.
 - [Updated game code](dig_dug/game.py)
-- [Chat history PDF](Repo%20Link%20and%20Codex%20Chat%20History%20SE%20Lab%204.pdf) and [shared chat snapshot](https://chatgpt.com/s/cx_6ac62d6b77ec8191b745ac38588f7635). The PDF follows the reference submission style and distinguishes real chat messages from task briefs in the assigned README.
+- [Reconstructed dialogue PDF](Repo%20Link%20and%20Codex%20Chat%20History%20SE%20Lab%204.pdf). It follows the reference submission's alternating User/Assistant format and is clearly labeled as an illustrative reconstruction, not an actual chat export.
 
 The videos replay a controlled tunnel layout through the actual game renderer and enemy update logic. Cyan outlines mark the 8-step shortest route; orange outlines mark the 10-step winding route. The after video also shows the dirt bands and deep-pop score. `record_demo.py` reproduces both recordings.
 
