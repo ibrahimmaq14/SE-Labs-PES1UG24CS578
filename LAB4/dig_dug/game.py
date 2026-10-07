@@ -16,8 +16,8 @@ def dirt_color(row):
 
 
 def on_enemy_popped(enemy, score):
-    """Called when an enemy is popped; add particles, bonus points, or a colour flash here."""
-    pass
+    """Award an extra 50 points for every four rows of depth."""
+    return score + 50 * (enemy.cell[0] // 4)
 
 
 def enemy_speed_multiplier(level):
@@ -117,7 +117,7 @@ class Game:
             self.enemies.remove(enemy)
             self.score += 200 + 100 * (enemy.cell[0] // 4)
             self.pump_target = None
-            on_enemy_popped(enemy, self.score)
+            self.score = on_enemy_popped(enemy, self.score)
             if not self.enemies:
                 self.level += 1
                 self.start_level()
