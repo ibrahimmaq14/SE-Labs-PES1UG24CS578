@@ -45,8 +45,20 @@ def make_route_scene(module):
     return game
 
 
-def draw_frame(module, game, screen, caption, detail):
+def draw_frame(module, game, screen, caption, detail, show_routes=False):
     game.draw(screen)
+    if show_routes:
+        short = [(4, c) for c in range(1, 8)] + [(5, 7)]
+        winding = (
+            [(6, c) for c in range(1, 4)]
+            + [(7, c) for c in range(3, 6)]
+            + [(6, c) for c in range(5, 8)]
+            + [(5, 7)]
+        )
+        for color, cells in (((75, 215, 255), short), ((255, 175, 75), winding)):
+            for row, col in cells:
+                rect = pygame.Rect(col * module.TILE + 2, row * module.TILE + 2, module.TILE - 4, module.TILE - 4)
+                pygame.draw.rect(screen, color, rect, 2)
     font = pygame.font.Font(None, 24)
     panel = pygame.Surface((module.WIDTH, 63), pygame.SRCALPHA)
     panel.fill((9, 12, 24, 220))
@@ -85,7 +97,6 @@ def record(game_path, output_path, mode):
                     game.time = second
                     game.pump()
                 game.time = second
-                game.draw(screen)
                 caption = "AFTER: banded dirt + deep-pop bonus"
                 detail = f"Level 3 speed x{module.enemy_speed_multiplier(3):.1f} | Score {game.score}"
                 writer.write(draw_frame(module, game, screen, caption, detail))
@@ -96,11 +107,11 @@ def record(game_path, output_path, mode):
             route.update_enemy(enemy, 1 / fps)
             if mode == "before":
                 caption = "BEFORE: original pathfinding bug"
-                detail = "Red enemy follows 10-step winding route; shortest is 8"
+                detail = "Enemy takes orange 10-step route; cyan route is 8"
             else:
                 caption = "AFTER: breadth-first pathfinding"
-                detail = "Red enemy follows 8-step shortest route"
-            writer.write(draw_frame(module, route, screen, caption, detail))
+                detail = "Enemy takes cyan 8-step shortest route"
+            writer.write(draw_frame(module, route, screen, caption, detail, show_routes=True))
     finally:
         writer.release()
         pygame.quit()
