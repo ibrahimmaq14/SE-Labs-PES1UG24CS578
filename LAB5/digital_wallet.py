@@ -112,8 +112,11 @@ def cashback_for(amount, merchant_type):
 
 def check_gateway(secret):
     """Compare an offered key with the configured key in constant time."""
-    return bool(CREDENTIALS) and isinstance(secret, str) and hmac.compare_digest(
-        secret.encode(), CREDENTIALS["gateway_secret"]
+    return (
+        bool(CREDENTIALS) and isinstance(secret, str)
+        and hmac.compare_digest(
+            secret.encode(), CREDENTIALS["gateway_secret"]
+        )
     )
 
 
@@ -150,10 +153,12 @@ def main():
     pay_merchant("Pharmacy", 420, pin)
     mini_statement()
     print("Cashback on 420:", cashback_for(420, "health"))
-    print("Gateway check:", check_gateway("wrong")) # should be False
+    print("Gateway check:", check_gateway("wrong"))  # should be False
     print("Final balance: Rs.", WALLET["balance"])
-    credit_amounts=[t["amount"] for t in TRANSACTIONS if t["type"] == "credit"]
-    print("Total credited:",sum(credit_amounts))
+    credit_amounts = [
+        t["amount"] for t in TRANSACTIONS if t["type"] == "credit"
+    ]
+    print("Total credited:", sum(credit_amounts))
 
 
 if __name__ == "__main__":
