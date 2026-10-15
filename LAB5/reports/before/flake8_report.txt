@@ -1,0 +1,4 @@
+original/digital_wallet.py:76:51: E261 at least two spaces before inline comment
+original/digital_wallet.py:78:18: E225 missing whitespace around operator
+original/digital_wallet.py:79:28: E231 missing whitespace after ','
+original/digital_wallet.py:80:1: E305 expected 2 blank lines after class or function definition, found 0
