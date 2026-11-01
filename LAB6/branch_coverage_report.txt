@@ -1,0 +1,15 @@
+LAB 6 - BRANCH COVERAGE | PES1UG24CS578
+Application: thermostat_control.py
+
+> python -m coverage run --data-file=.coverage.branch --branch --source=thermostat_control -m pytest -q BranchCoverageTest_thermostat_control.py
+..................................................                       [100%]
+50 passed in 0.10s
+[exit code: 0]
+
+> python -m coverage report --data-file=.coverage.branch -m --fail-under=90
+Name                    Stmts   Miss Branch BrPart  Cover   Missing
+-------------------------------------------------------------------
+thermostat_control.py      35      0     28      0   100%
+-------------------------------------------------------------------
+TOTAL                      35      0     28      0   100%
+[exit code: 0]
